@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://mi7m3rei2piu"]
+
+[ext_resource type="PackedScene" uid="uid://bndnksh1i2105" path="res://prefabs/player.tscn" id="1_tgny4"]
+[ext_resource type="TileSet" uid="uid://c7wj1mydh2f4c" path="res://tilesets/environment.tres" id="2_o3dpf"]
+
+[node name="Testing" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_tgny4")]
+position = Vector2(105, 208)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_o3dpf")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(1048580, 65536, 0, 1048581, 65536, 0, 1048582, 65536, 0, 1048583, 65536, 0, 1048584, 65536, 0, 1048585, 65536, 0, 1048579, 0, 0, 1048586, 131072, 0, 655374, 65536, 1, 655375, 65536, 1, 655376, 65536, 1, 655377, 65536, 1, 655373, 0, 1, 655378, 131072, 1, 589837, 65536, 1, 589838, 65536, 1, 589839, 65536, 1, 589840, 65536, 1, 589841, 65536, 1, 589842, 65536, 1, 524306, 65536, 1, 524305, 65536, 1, 524304, 65536, 1, 524303, 65536, 1, 524302, 65536, 1, 524301, 65536, 1, 393229, 65536, 1, 458765, 65536, 1, 458766, 65536, 1, 458767, 65536, 1, 393231, 65536, 1, 393232, 65536, 1, 393233, 65536, 1, 393234, 65536, 1, 458770, 65536, 1, 458769, 65536, 1, 458768, 65536, 1, 393230, 65536, 1, 327693, 65536, 0, 327694, 65536, 0, 327695, 65536, 0, 327696, 65536, 0, 327697, 65536, 0, 327698, 65536, 0, 1048597, 0, 0, 1048598, 65536, 0, 1048599, 131072, 0)
+
+[node name="Reference" type="Node2D" parent="."]
+position = Vector2(400, 300)

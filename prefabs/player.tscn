@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://bndnksh1i2105"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7xx2g"]
+[ext_resource type="Texture2D" uid="uid://cdedt46ypk23w" path="res://sprites/player/birb.png" id="1_8rctm"]
+[ext_resource type="PackedScene" uid="uid://bpw54turq1i53" path="res://prefabs/grappling_hook.tscn" id="3_5wska"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe3oh"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utx2g"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7l3g"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1eux"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5fbf"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rq3g"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q2y1"]
+atlas = ExtResource("1_8rctm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvxkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe3oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utx2g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7l3g")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1eux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5fbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rq3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q2y1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdbtd"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_7xx2g")
+terminal_speed = 200.0
+jump_height = 75.0
+time_constant = 0.1
+max_scale = 5.0
+grappling_speed = 45.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_kvxkh")
+animation = &"idle"
+frame_progress = 0.0895251
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jdbtd")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="GrapplingHook" parent="." groups=["Player"] instance=ExtResource("3_5wska")]
